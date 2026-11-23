@@ -14,7 +14,7 @@ Predicts house prices from 11 property features and compares three regression mo
 |---|---|---|---|---|
 | Linear Regression | 1.0000 | 13.0 | 13.0 | 1.0000 |
 | XGBoost | 0.9987 | 79.8 | 60.1 | 0.9984 |
-| Random Forest | not reported on test set | 224.9 | 170.0 | 0.9867 |
+| Random Forest | 0.9897 | 224.9 | 170.0 | 0.9867 |
 
 ## Key findings
 - **Linear Regression fits almost perfectly** (R-squared 1.0, average error of 13). This tells us price in this dataset is very close to a straight-line function of the features, which suggests the data is synthetic. On real housing data you would not expect this, so the models here are best read as a comparison exercise.
@@ -37,4 +37,6 @@ Python, pandas, NumPy, scikit-learn, XGBoost, PyCaret, matplotlib, seaborn.
 pip install pandas numpy scikit-learn xgboost matplotlib seaborn jupyter
 jupyter notebook House_Price_Prediction.ipynb
 ```
-The notebook was written in Google Colab and loads the CSVs from Google Drive. Locally, change the two `read_csv` paths to the CSV files in this folder and remove the Drive mount cell.
+The notebook reads the CSVs in this folder, so it runs locally or in Colab as it is. The PyCaret cells at the end are optional and skip themselves if PyCaret is not installed.
+
+*Note: an earlier version of the notebook scored the Random Forest on the training data, which overstated it (0.9985). It is now scored on the test set (0.9897).*
